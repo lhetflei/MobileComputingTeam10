@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.lendify.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+
 
 class MainActivity : AppCompatActivity() {
 
