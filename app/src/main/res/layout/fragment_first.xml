@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firstFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/TextViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Persönliche Informationen"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TextViewBenutzername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Benutzername"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/ButtonEditName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bearbeiten" />
+
+        <TextView
+            android:id="@+id/TextViewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email Adresse"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/ButtonEditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bearbeiten" />
+
+        <TextView
+            android:id="@+id/TextViewPasswort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Passwort"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/ButtonEditPasswort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bearbeiten" />
+    </LinearLayout>
+
+</FrameLayout>

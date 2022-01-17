@@ -6,64 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".PersonalActivity">
 
-    <LinearLayout
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.976"
+        app:menu="@menu/bottom_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
-        <TextView
-            android:id="@+id/TextViewTitle"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Persönliche Informationen"
-            android:textColor="@color/black"
-            android:textSize="32sp"
-            android:textStyle="bold" />
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:navGraph="@navigation/nav_graph" />
 
-        <TextView
-            android:id="@+id/TextViewBenutzername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Benutzername"
-            android:textSize="22sp" />
 
-        <Button
-            android:id="@+id/ButtonEditName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bearbeiten" />
-
-        <TextView
-            android:id="@+id/TextViewEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email Adresse"
-            android:textSize="22sp" />
-
-        <Button
-            android:id="@+id/ButtonEditEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bearbeiten" />
-
-        <TextView
-            android:id="@+id/TextViewPasswort"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Passwort"
-            android:textSize="22sp" />
-
-        <Button
-            android:id="@+id/ButtonEditPasswort"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bearbeiten" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
