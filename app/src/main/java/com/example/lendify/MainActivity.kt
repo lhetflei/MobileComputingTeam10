@@ -1,5 +1,6 @@
 package com.example.lendify
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -13,7 +14,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.ButtonLogin.setOnClickListener {
+            val intent = Intent(this,RegistrationActivity::class.java)
+            startActivity(intent)
+        }
+
     }
-    val myButton: Button = findViewById(R.id.ButtonLogin)
+
+
+
 
 }
