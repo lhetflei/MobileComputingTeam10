@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lendify">
         <activity
+            android:name=".PersonalActivity"
+            android:exported="true" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="true" />
         <activity
