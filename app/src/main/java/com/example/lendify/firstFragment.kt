@@ -18,6 +18,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
 
     private var _binding:FragmentFirstBinding?=null
     private val binding get()=_binding!!
+    private var ref = FirebaseAuth.getInstance()
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +32,11 @@ class firstFragment : Fragment(R.layout.fragment_first) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.ButtonEditName.setOnClickListener {
+            ref.signOut()
+            val intent = Intent(activity,MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
     override fun onDestroy() {
