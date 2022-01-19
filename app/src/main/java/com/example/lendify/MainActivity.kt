@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun checkUser() {
+
+    }
+
 
 
 
