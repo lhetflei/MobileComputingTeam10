@@ -29,6 +29,7 @@ class RegistrationActivity : AppCompatActivity() {
         if (binding.EditTextEmail.text.isNotEmpty() && binding.EditTextPassword.text.isNotEmpty()) {
             val email = binding.EditTextEmail.text.toString().trim()
             val password = binding.EditTextPassword.text.toString().trim()
+
             ref.createUserWithEmailAndPassword(
                 email, password
             )
