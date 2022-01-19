@@ -2,6 +2,7 @@ package com.example.lendify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.lendify.databinding.ActivityMainBinding
 import com.example.lendify.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +24,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     }
     fun register(){
-        binding.ButtonRegister.setOnClickListener{
+
             val email = binding.EditTextEmail.text.toString().trim()
             val password = binding.EditTextPassword.text.toString().trim()
 
@@ -31,10 +32,6 @@ class RegistrationActivity : AppCompatActivity() {
                 email, password
             )
         }
-    }
+
 
 }
-/*if(binding.EditTextName.text.isNotEmpty()&&binding.EditTextEmail.text.isNotEmpty()&&binding.EditTextPassword.text.isNotEmpty())
-        binding.TextView1.text="Erfolg"
-        else
-            binding.TextView1.text="Fehler"*/
