@@ -37,8 +37,29 @@ class firstFragment : Fragment(R.layout.fragment_first) {
             val intent = Intent(activity,MainActivity::class.java)
             startActivity(intent)
         }
-        binding.ButtonEditEmail.text=ref.currentUser!!.email!!.toString()
+        binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
+        binding.ButtonEditEmail.setOnClickListener {updatemail()}
+        binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
 
+    }
+    fun updatemail(){
+        ref.signInWithEmailAndPassword(ref.currentUser!!.email.toString(),binding.editTextTextPassword2.text.toString().trim())
+        ref.currentUser!!.updateEmail(binding.editTextTextEmailAddress.text.toString().trim())
+        binding.TextViewEmail.text=binding.editTextTextEmailAddress.text
+    }
+    fun updatepasswort(){
+        if(binding.editTextTextPassword4.text.toString().trim()==binding.editTextTextPassword5.text.toString().trim()) {
+            ref.signInWithEmailAndPassword(ref.currentUser!!.email.toString(),binding.editTextTextPassword3.text.toString().trim())
+            ref.currentUser!!.updatePassword(binding.editTextTextPassword4.text.toString().trim()).addOnSuccessListener {
+                Toast.makeText(activity, "Passwort erfolgreich geändert", Toast.LENGTH_SHORT).show()
+            }
+                .addOnFailureListener{ e->
+                    Toast.makeText(activity,"Passwort ändern fehlgeschlagen Grund: ${e.message}",Toast.LENGTH_LONG).show()}
+        }
+        else
+        {
+            Toast.makeText(activity,"Passwort ändern fehlgeschlagen",Toast.LENGTH_SHORT).show()
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
