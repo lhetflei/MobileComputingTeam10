@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.TextViewRegister.setOnClickListener { val intent = Intent(this,RegistrationActivity::class.java)
             startActivity(intent) }
-        Toast.makeText(applicationContext,ref.currentUser.toString(),Toast.LENGTH_LONG).show()
         checkUser()
 
     }

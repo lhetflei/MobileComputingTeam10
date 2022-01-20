@@ -21,7 +21,8 @@ class RegistrationActivity : AppCompatActivity() {
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.ButtonRegister.setOnClickListener { register() }
-
+        binding.TextView1.setOnClickListener { val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent) }
 
     }
 
@@ -29,17 +30,28 @@ class RegistrationActivity : AppCompatActivity() {
         if (binding.EditTextEmail.text.isNotEmpty() && binding.EditTextPassword.text.isNotEmpty()) {
             val email = binding.EditTextEmail.text.toString().trim()
             val password = binding.EditTextPassword.text.toString().trim()
+            val passwordC = binding.editTextTextPassword.text.toString().trim()
+            if (password == passwordC) {
+                ref.createUserWithEmailAndPassword(
+                    email, password
+                )
+                Toast.makeText(
+                    applicationContext,
+                    "Sie haben Sich erfolgreich registriert. Loggen Sie sich nun ein !",
+                    Toast.LENGTH_SHORT
+                ).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            else Toast.makeText(applicationContext,"Passwort Stimmt nicht überein",Toast.LENGTH_SHORT).show()
 
-            ref.createUserWithEmailAndPassword(
-                email, password
-            )
-            Toast.makeText(
-                applicationContext, "Sie haben Sich erfolgreich registriert. Loggen Sie sich nun ein !", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-        if (binding.EditTextEmail.text.isNullOrEmpty() && binding.EditTextPassword.text.isNullOrEmpty()) {
-            Toast.makeText(applicationContext, "Bitte geben Sie eine Email-Adresse und ein gültiges Passwort ein!", Toast.LENGTH_SHORT).show()
+            if (binding.EditTextEmail.text.isNullOrEmpty() && binding.EditTextPassword.text.isNullOrEmpty()) {
+                Toast.makeText(
+                    applicationContext,
+                    "Bitte geben Sie eine Email-Adresse und ein gültiges Passwort ein!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,10 +8,21 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/ButtonEditName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ausloggen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.931" />
 
         <TextView
             android:id="@+id/TextViewTitle"
@@ -19,46 +31,55 @@
             android:text="Persönliche Informationen"
             android:textColor="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/TextViewBenutzername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Benutzername"
-            android:textSize="22sp" />
-
-        <Button
-            android:id="@+id/ButtonEditName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bearbeiten" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023"
+            tools:layout_editor_absoluteX="16dp" />
 
         <TextView
             android:id="@+id/TextViewEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email Adresse"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.132"
+            tools:layout_editor_absoluteX="0dp" />
 
         <Button
             android:id="@+id/ButtonEditEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bearbeiten" />
+            android:layout_marginBottom="12dp"
+            android:text="Bearbeiten"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.207"
+            tools:layout_editor_absoluteX="0dp" />
 
         <TextView
             android:id="@+id/TextViewPasswort"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Passwort"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.292"
+            tools:layout_editor_absoluteX="0dp" />
 
         <Button
             android:id="@+id/ButtonEditPasswort"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bearbeiten" />
-    </LinearLayout>
+            android:text="Bearbeiten"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.373"
+            tools:layout_editor_absoluteX="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

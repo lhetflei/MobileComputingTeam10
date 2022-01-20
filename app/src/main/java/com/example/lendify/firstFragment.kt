@@ -37,6 +37,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
             val intent = Intent(activity,MainActivity::class.java)
             startActivity(intent)
         }
+        binding.ButtonEditEmail.text=ref.currentUser!!.email!!.toString()
 
     }
     override fun onDestroy() {
