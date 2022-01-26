@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.lendify.databinding.FragmentFirstBinding
+import com.example.lendify.adapter.ItemAdapter
+import com.example.lendify.data.Datasource
 import com.example.lendify.databinding.FragmentSecondBinding
 
 class secondFragment : Fragment(R.layout.fragment_second) {
@@ -24,7 +25,9 @@ class secondFragment : Fragment(R.layout.fragment_second) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val myDataset = Datasource().loadItems()
+        //val recyclerView = binding.recyclerView
+        binding.recyclerView.adapter = ItemAdapter(this, myDataset)
     }
     override fun onDestroy() {
         super.onDestroy()
