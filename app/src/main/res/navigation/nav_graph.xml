@@ -15,4 +15,9 @@
         android:name="com.example.lendify.firstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" />
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.example.lendify.thirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" />
 </navigation>
