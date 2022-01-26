@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Lendify</string>
     <string name="anmelden">Sie haben bereits einen Account? Hier zum Login</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="test1">test text</string>string>
+    <string name="test2">test text2</string>string>
+    <string name="test3">test text3</string>string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
