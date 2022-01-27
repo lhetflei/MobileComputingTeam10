@@ -1,10 +1,40 @@
 {
   "project_info": {
     "project_number": "90955041012",
+    "firebase_url": "https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "lendify-6cd5f",
     "storage_bucket": "lendify-6cd5f.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90955041012:android:4683b172fbd68fd2acb6a1",
+        "android_client_info": {
+          "package_name": "com.example.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90955041012-j7gdiametv2cjghd5ij1bfov58r1t7ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByvEif9emvLqAf2RwBbCtb3ObUW44nCng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90955041012-j7gdiametv2cjghd5ij1bfov58r1t7ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:90955041012:android:092f132d53442e61acb6a1",
