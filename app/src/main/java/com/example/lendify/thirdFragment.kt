@@ -1,5 +1,6 @@
 package com.example.lendify
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +36,11 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         val myDataset = Datasource().loadItems2()
         binding.recyclerView.adapter = ItemAdapter2(this, myDataset)
+
+        binding.buttonAdd.setOnClickListener{
+            val intent = Intent(context,UploadActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
