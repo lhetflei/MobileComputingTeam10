@@ -26,8 +26,8 @@ class secondFragment : Fragment(R.layout.fragment_second) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val myDataset = Datasource().loadItems()
-        //val recyclerView = binding.recyclerView
         binding.recyclerView.adapter = ItemAdapter(this, myDataset)
+
     }
     override fun onDestroy() {
         super.onDestroy()
