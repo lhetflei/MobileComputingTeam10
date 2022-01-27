@@ -1,6 +1,5 @@
 package com.example.lendify
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,7 +41,7 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
             startActivity(intent)
         }
 
-        
+
     }
     override fun onDestroy() {
         super.onDestroy()
