@@ -1,14 +1,14 @@
 package com.example.lendify
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lendify.adapter.ItemAdapter
+import com.example.lendify.adapter.ItemAdapter2
+import com.example.lendify.data.Datasource
 import com.example.lendify.databinding.FragmentFirstBinding
 import com.example.lendify.databinding.FragmentSecondBinding
 import com.example.lendify.databinding.FragmentThirdBinding
@@ -29,19 +29,12 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*val images = listOf<Image>(
-            Image("Images 1", R.drawable.bild),
-            Image("Images 2", R.drawable.bild2),
-            Image("Images 3", R.drawable.bild3),
-        )
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = ImageAdapter(this, images)*/
 
-        binding.buttonAdd.setOnClickListener{
-            val intent = Intent(context,UploadActivity::class.java)
-            startActivity(intent)
-        }
+
+
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        val myDataset = Datasource().loadItems2()
+        binding.recyclerView.adapter = ItemAdapter2(this, myDataset)
 
 
     }

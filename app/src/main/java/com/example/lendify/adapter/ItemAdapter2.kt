@@ -2,6 +2,7 @@ package com.example.lendify.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.service.autofill.Dataset
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +16,8 @@ import com.example.lendify.model.Items
 import com.example.lendify.secondFragment
 import com.example.lendify.thirdFragment
 
-class ItemAdapter(
-    private val context: secondFragment,
+class ItemAdapter2(
+    private val context: thirdFragment,
     private val dataset: List<Items>
     ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
@@ -36,7 +37,9 @@ class ItemAdapter(
 
     override fun getItemCount() = dataset.size
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+
+
+    override fun onBindViewHolder(holder: ItemAdapter.ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.textView.text = context.resources.getString(item.stringResourceId)
         holder.imageView.setImageResource(item.imageResourceId)
