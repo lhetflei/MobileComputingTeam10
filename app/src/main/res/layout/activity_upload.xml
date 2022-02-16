@@ -32,4 +32,12 @@
         android:layout_marginTop="437dp"
         android:src="@drawable/ic_gallery" />
 
+    <ImageView
+        android:id="@+id/firebaseImage"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        tools:src="@android:drawable/ic_menu_gallery" />
+
 </FrameLayout>
