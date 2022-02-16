@@ -16,8 +16,6 @@ class secondFragment : Fragment(R.layout.fragment_second) {
 
     private var _binding: FragmentSecondBinding?=null
     private val binding get()=_binding!!
-    var storageRef = FirebaseStorage.getInstance().reference.child("Bilder/rwb2.jpg")
-    val localfile = File.createTempFile("tempImage","jpg")
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,10 +30,7 @@ class secondFragment : Fragment(R.layout.fragment_second) {
         super.onViewCreated(view, savedInstanceState)
         val myDataset = Datasource().loadItems()
         binding.recyclerView.adapter = ItemAdapter(this, myDataset)
-        storageRef.getFile(localfile).addOnSuccessListener {
-            val bitmap= BitmapFactory.decodeFile(localfile.absolutePath)
-            binding.itemImage.setImageBitmap(bitmap)
-        }
+
 
     }
     override fun onDestroy() {
