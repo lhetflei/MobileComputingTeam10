@@ -48,6 +48,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
         binding.ButtonEditEmail.setOnClickListener {updatemail()}
         binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
+
         database.child("1").get().addOnSuccessListener {
             binding.textView4.text= it.child("bild").value.toString()
             binding.textView5.text =it.child("text").value.toString()
