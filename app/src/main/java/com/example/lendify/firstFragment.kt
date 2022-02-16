@@ -24,9 +24,6 @@ class firstFragment : Fragment(R.layout.fragment_first) {
     private var _binding:FragmentFirstBinding?=null
     private val binding get()=_binding!!
     private var ref = FirebaseAuth.getInstance()
-
-    val localfile = File.createTempFile("tempImage","jpg")
-    private var database =FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,16 +46,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         binding.ButtonEditEmail.setOnClickListener {updatemail()}
         binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
 
-        database.child("1").get().addOnSuccessListener {
-            binding.textView4.text= it.child("bild").value.toString()
-            binding.textView5.text =it.child("text").value.toString()
-            binding.textView6.text =it.child("user").value.toString()
-            var storageRef = FirebaseStorage.getInstance().reference.child(it.child("bild").value.toString())
-            storageRef.getFile(localfile).addOnSuccessListener {
-                val bitmap= BitmapFactory.decodeFile(localfile.absolutePath)
-                binding.itemImage.setImageBitmap(bitmap)
-            }
-        }
+
 
 
 

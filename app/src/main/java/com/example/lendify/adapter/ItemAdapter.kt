@@ -30,9 +30,7 @@ class ItemAdapter(
         val title :TextView =view.findViewById(R.id.item_title)
         val price :TextView =view.findViewById(R.id.item_price)
         val image :ImageView =view.findViewById(R.id.item_image)
-       /* val textView: TextView =view.findViewById(R.id.item_title)
-        val textView2: TextView =view.findViewById(R.id.item_price)
-        val imageView: ImageView = view.findViewById(R.id.item_image)*/
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
         // create a new view
@@ -52,9 +50,7 @@ class ItemAdapter(
             val bitmap= BitmapFactory.decodeFile(localfile.absolutePath)
             holder.image.setImageBitmap(bitmap)
         }
-       // holder.image.text = item.image
-        //holder.textView2.text = context.resources.getString(item.priceRessourceId)
-        //holder.imageView.setImageResource(item.imageResourceId)
+
 
     }
 }
