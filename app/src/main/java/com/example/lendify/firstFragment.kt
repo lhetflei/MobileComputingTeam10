@@ -1,6 +1,7 @@
 package com.example.lendify
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,13 +13,20 @@ import com.example.lendify.databinding.FragmentFirstBinding
 import com.example.lendify.databinding.FragmentSecondBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class firstFragment : Fragment(R.layout.fragment_first) {
 
     private var _binding:FragmentFirstBinding?=null
     private val binding get()=_binding!!
     private var ref = FirebaseAuth.getInstance()
+
+    val localfile = File.createTempFile("tempImage","jpg")
+    private var database =FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +48,19 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
         binding.ButtonEditEmail.setOnClickListener {updatemail()}
         binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
+        database.child("1").get().addOnSuccessListener {
+            binding.textView4.text= it.child("bild").value.toString()
+            binding.textView5.text =it.child("text").value.toString()
+            binding.textView6.text =it.child("user").value.toString()
+            var storageRef = FirebaseStorage.getInstance().reference.child(it.child("bild").value.toString())
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap= BitmapFactory.decodeFile(localfile.absolutePath)
+                binding.itemImage.setImageBitmap(bitmap)
+            }
+        }
+
+
+
 
     }
     fun updatemail(){
