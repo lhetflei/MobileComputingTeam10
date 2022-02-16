@@ -34,8 +34,8 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
 
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        val myDataset = Datasource().loadItems2()
-        binding.recyclerView.adapter = ItemAdapter2(this, myDataset)
+        val myDataset = Datasource().loadItems()
+        binding.recyclerView.adapter = ItemAdapter(myDataset)
 
         binding.buttonAdd.setOnClickListener{
             val intent = Intent(context,UploadActivity::class.java)
