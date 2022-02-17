@@ -1,8 +1,10 @@
 package com.example.lendify
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +26,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
     private var _binding:FragmentFirstBinding?=null
     private val binding get()=_binding!!
     private var ref = FirebaseAuth.getInstance()
+    val localfile = File.createTempFile("tempImage","jpg")
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,17 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
         binding.ButtonEditEmail.setOnClickListener {updatemail()}
         binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
+        Log.i(TAG,ref.uid.toString() )
+        var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference(ref.uid.toString())
+        database.child("bild").get().addOnSuccessListener {
+            var temp = it.value.toString()
+            var storageRef = FirebaseStorage.getInstance().reference.child(temp)
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                binding.imageView3.setImageBitmap(bitmap)
+            }
+
+        }
 
 
 

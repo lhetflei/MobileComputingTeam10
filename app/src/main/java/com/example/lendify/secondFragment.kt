@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.squareup.okhttp.Dispatcher
 import kotlinx.coroutines.*
 import java.io.File
 
@@ -26,6 +27,7 @@ class secondFragment : Fragment(R.layout.fragment_second) {
     var itemlist = arrayListOf<Items>()
     private var _binding: FragmentSecondBinding?=null
     private val binding get()=_binding!!
+    private val myDataset = arrayListOf<Items>()
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +42,14 @@ class secondFragment : Fragment(R.layout.fragment_second) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val myDataset = Datasource().loadItems()
-        binding.recyclerView.adapter = ItemAdapter(myDataset)
+        GlobalScope.launch(Dispatchers.Main) {
+            val myDataset = Datasource().loadItems()
+            delay(300)
+            Log.i(TAG, "main")
+            binding.recyclerView.adapter = ItemAdapter(myDataset)
+        }
+
+
 
 
     }

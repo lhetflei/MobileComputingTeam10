@@ -1,7 +1,9 @@
 package com.example.lendify
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,10 @@ import com.example.lendify.data.Datasource
 import com.example.lendify.databinding.FragmentFirstBinding
 import com.example.lendify.databinding.FragmentSecondBinding
 import com.example.lendify.databinding.FragmentThirdBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class thirdFragment : Fragment(R.layout.fragment_third) {
 
@@ -34,8 +40,12 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
 
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        val myDataset = Datasource().loadItems()
-        binding.recyclerView.adapter = ItemAdapter(myDataset)
+        GlobalScope.launch(Dispatchers.Main) {
+            val myDataset = Datasource().loadItems()
+            delay(300)
+            Log.i(ContentValues.TAG, "main")
+            binding.recyclerView.adapter = ItemAdapter(myDataset)
+        }
 
         binding.buttonAdd.setOnClickListener{
             val intent = Intent(context,UploadActivity::class.java)

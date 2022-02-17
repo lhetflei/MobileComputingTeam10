@@ -19,6 +19,8 @@ import com.example.lendify.secondFragment
 import com.example.lendify.thirdFragment
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.squareup.okhttp.Dispatcher
+import kotlinx.coroutines.*
 import java.io.File
 
 class ItemAdapter(
@@ -41,16 +43,18 @@ class ItemAdapter(
 
     override fun getItemCount() = dataset.size
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataset[position]
-        holder.title.text = item.title
-        holder.price.text = item.price.toString()
-        var storageRef = FirebaseStorage.getInstance().reference.child(item.image.toString())
-        storageRef.getFile(localfile).addOnSuccessListener {
-            val bitmap= BitmapFactory.decodeFile(localfile.absolutePath)
-            holder.image.setImageBitmap(bitmap)
-        }
 
+
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+
+            val item = dataset[position]
+            holder.title.text = item.title
+            holder.price.text = item.price.toString()
+            var storageRef = FirebaseStorage.getInstance().reference.child(item.image.toString())
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                holder.image.setImageBitmap(bitmap)
+            }
 
     }
 }
