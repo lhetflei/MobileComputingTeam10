@@ -3,6 +3,7 @@ package com.example.lendify.adapter
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,7 +28,7 @@ class ItemAdapter(
     private val dataset: ArrayList<Items>
     ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     val localfile = File.createTempFile("tempImage","jpg")
-
+    val item = dataset[0]
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
         val title :TextView =view.findViewById(R.id.item_title)
         val price :TextView =view.findViewById(R.id.item_price)
@@ -46,14 +47,16 @@ class ItemAdapter(
 
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val item = dataset[position]
+        holder.title.text = item.title
+        holder.price.text = item.price.toString()
 
-            val item = dataset[position]
-            holder.title.text = item.title
-            holder.price.text = item.price.toString()
             var storageRef = FirebaseStorage.getInstance().reference.child(item.image.toString())
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                holder.image.setImageBitmap(bitmap)
+                holder.image.setImageBitmap(Bitmap.createScaledBitmap(bitmap,350,280,true))
+
+
             }
 
     }

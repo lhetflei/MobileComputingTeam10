@@ -45,11 +45,15 @@ class firstFragment : Fragment(R.layout.fragment_first) {
             val intent = Intent(activity,MainActivity::class.java)
             startActivity(intent)
         }
-        binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
-        binding.ButtonEditEmail.setOnClickListener {updatemail()}
-        binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
-        Log.i(TAG,ref.uid.toString() )
         var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference(ref.uid.toString())
+        binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
+        binding.ButtonEditEmail.setOnClickListener { updatemail()}
+        binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
+        binding.button.setOnClickListener{
+
+        }
+        Log.i(TAG,ref.uid.toString() )
+
         database.child("bild").get().addOnSuccessListener {
             var temp = it.value.toString()
             var storageRef = FirebaseStorage.getInstance().reference.child(temp)
@@ -67,9 +71,13 @@ class firstFragment : Fragment(R.layout.fragment_first) {
 
     }
     fun updatemail(){
+        if(binding.editTextTextEmailAddress.text.toString()!=""&&binding.editTextTextPassword2.text.toString()!=""){
         ref.signInWithEmailAndPassword(ref.currentUser!!.email.toString(),binding.editTextTextPassword2.text.toString().trim())
         ref.currentUser!!.updateEmail(binding.editTextTextEmailAddress.text.toString().trim())
         binding.TextViewEmail.text=binding.editTextTextEmailAddress.text
+            Toast.makeText(activity,"Email geändert",Toast.LENGTH_SHORT).show()
+        }
+        else Toast.makeText(activity,"Neue Email eingeben",Toast.LENGTH_SHORT).show()
     }
     fun updatepasswort(){
         if(binding.editTextTextPassword4.text.toString().trim()==binding.editTextTextPassword5.text.toString().trim()) {

@@ -44,7 +44,7 @@ class secondFragment : Fragment(R.layout.fragment_second) {
         super.onViewCreated(view, savedInstanceState)
         GlobalScope.launch(Dispatchers.Main) {
             val myDataset = Datasource().loadItems()
-            delay(300)
+            delay(350)
             Log.i(TAG, "main")
             binding.recyclerView.adapter = ItemAdapter(myDataset)
         }

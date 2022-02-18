@@ -41,8 +41,8 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         GlobalScope.launch(Dispatchers.Main) {
-            val myDataset = Datasource().loadItems()
-            delay(300)
+            val myDataset = Datasource().loadItems2()
+            delay(350)
             Log.i(ContentValues.TAG, "main")
             binding.recyclerView.adapter = ItemAdapter(myDataset)
         }
