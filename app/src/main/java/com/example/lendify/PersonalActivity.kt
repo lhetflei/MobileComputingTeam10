@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.example.lendify.data.Datasource
 import com.example.lendify.databinding.ActivityPersonalBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +22,6 @@ class PersonalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPersonalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController=findNavController(R.id.fragment)
         bottomNavigationView.setupWithNavController(navController)

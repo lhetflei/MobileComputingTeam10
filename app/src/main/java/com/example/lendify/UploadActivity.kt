@@ -22,6 +22,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.lendify.databinding.ActivityUploadBinding
+import com.example.lendify.model.Items
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -36,52 +39,57 @@ class UploadActivity : AppCompatActivity() {
     lateinit var binding: ActivityUploadBinding
     var ImageUri: Uri? = null
     var ImageBytes: ByteArray? = null
+    private var ref = FirebaseAuth.getInstance()
     val formatter = java.text.SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
     val now = Date()
     val fileName = formatter.format(now)
+    var database =
+        FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar!!.setTitle("Gegenstand zum Verleih freigeben")
 
         binding.imageViewGallery.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED){
+                    PackageManager.PERMISSION_DENIED
+                ) {
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE);
                     requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else{
+                } else {
                     pickImageFromGallery();
                 }
-            }
-            else{
+            } else {
                 pickImageFromGallery();
             }
         }
 
-        binding.imageViewCamera.setOnClickListener{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+        binding.imageViewCamera.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(android.Manifest.permission.CAMERA) ==
-                    PackageManager.PERMISSION_DENIED){
+                    PackageManager.PERMISSION_DENIED
+                ) {
                     val permissions = arrayOf(android.Manifest.permission.CAMERA);
                     requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else{
+                } else {
                     takeImageFromCamera();
                 }
-            }
-            else{
+            } else {
                 takeImageFromCamera();
             }
 
         }
 
-        binding.buttonUpload.setOnClickListener{
+        binding.buttonUpload.setOnClickListener {
             upload()
         }
     }
+
 
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
@@ -213,5 +221,11 @@ class UploadActivity : AppCompatActivity() {
                 }
             }
         }
+        uploaddatabase()
+    }
+    fun uploaddatabase()
+    {
+        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt(),ref.uid.toString()+now.toString())
+        database.child("angebot").child(ref.uid.toString()+now.toString()).setValue(add)
     }
 }

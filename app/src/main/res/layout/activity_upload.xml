@@ -34,10 +34,32 @@
 
     <ImageView
         android:id="@+id/firebaseImage"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="190dp"
+        android:background="@android:drawable/ic_menu_gallery"
         tools:src="@android:drawable/ic_menu_gallery" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Name des Gegenstandes"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Preis pro Tag"
+        android:inputType="textPersonName" />
 
 </FrameLayout>
