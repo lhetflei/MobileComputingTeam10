@@ -23,6 +23,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.okhttp.Dispatcher
 import kotlinx.coroutines.*
 import java.io.File
+import java.lang.Exception
 
 class ItemAdapter(
     private val dataset: ArrayList<Items>
@@ -30,9 +31,9 @@ class ItemAdapter(
     val localfile = File.createTempFile("tempImage","jpg")
     val item = dataset[0]
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
-        val title :TextView =view.findViewById(R.id.item_title)
+        val text :TextView =view.findViewById(R.id.item_title)
         val price :TextView =view.findViewById(R.id.item_price)
-        val image :ImageView =view.findViewById(R.id.item_image)
+        val bild :ImageView =view.findViewById(R.id.item_image)
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
@@ -48,14 +49,19 @@ class ItemAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.title.text = item.title
+        holder.text.text = item.text
         holder.price.text = item.price.toString()+"€/Tag"
 
-            var storageRef = FirebaseStorage.getInstance().reference.child(item.image.toString())
+            var storageRef = FirebaseStorage.getInstance().reference.child(item.bild.toString())
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                holder.image.setImageBitmap(Bitmap.createScaledBitmap(bitmap,350,280,true))
-
+                try {
+                    holder.bild.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 350, 280, true))
+                }
+                catch(e:Exception)
+                {
+                    holder.bild.setImageBitmap(bitmap)
+                }
 
             }
 

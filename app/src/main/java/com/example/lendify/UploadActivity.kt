@@ -15,6 +15,9 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.lendify.databinding.ActivityUploadBinding
+import com.example.lendify.model.Items
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 import java.util.jar.Manifest
@@ -24,7 +27,11 @@ class UploadActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityUploadBinding
     lateinit var ImageUri: Uri
-
+    private var ref = FirebaseAuth.getInstance()
+    val formatter = java.text.SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+    val now = Date()
+    val fileName = formatter.format(now)
+    var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
@@ -86,9 +93,6 @@ class UploadActivity : AppCompatActivity() {
             progressDialog.setCancelable(false)
             progressDialog.show()
 
-            val formatter = java.text.SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
-            val now = Date()
-            val fileName = formatter.format(now)
             val storageReference = FirebaseStorage.getInstance().getReference("Bilder/$fileName")
             binding.firebaseImage.setImageURI(data?.data)
             ImageUri = data?.data!!
@@ -105,6 +109,12 @@ class UploadActivity : AppCompatActivity() {
                 Toast.makeText(this, "Upload fehlgeschlagen!", Toast.LENGTH_SHORT).show()
             }
 
+            uploaddatabase()
         }
+    }
+    fun uploaddatabase()
+    {
+        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt())
+        database.child("angebot").child(ref.uid.toString()+now.toString()).setValue(add)
     }
 }
