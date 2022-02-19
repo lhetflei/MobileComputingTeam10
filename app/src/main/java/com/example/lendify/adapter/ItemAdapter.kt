@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lendify.PersonalActivity
@@ -30,17 +31,29 @@ class ItemAdapter(
     ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     val localfile = File.createTempFile("tempImage","jpg")
     val item = dataset[0]
-    class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
+    class ItemViewHolder(private val view: View,listener:onItemClickListener): RecyclerView.ViewHolder(view){
         val text :TextView =view.findViewById(R.id.item_title)
         val price :TextView =view.findViewById(R.id.item_price)
         val bild :ImageView =view.findViewById(R.id.item_image)
 
+        init{
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
+    }
+    private lateinit var mListener:onItemClickListener
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+    fun setOnItemClickListener(listener:onItemClickListener){
+        mListener = listener
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item, parent, false)
-        return ItemAdapter.ItemViewHolder(adapterLayout)
+        return ItemAdapter.ItemViewHolder(adapterLayout,mListener)
     }
 
     override fun getItemCount() = dataset.size
@@ -64,6 +77,7 @@ class ItemAdapter(
                 }
 
             }
+
 
     }
 }

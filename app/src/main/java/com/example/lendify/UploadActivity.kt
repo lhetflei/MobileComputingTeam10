@@ -114,7 +114,7 @@ class UploadActivity : AppCompatActivity() {
     }
     fun uploaddatabase()
     {
-        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt())
+        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt(),ref.uid.toString()+now.toString())
         database.child("angebot").child(ref.uid.toString()+now.toString()).setValue(add)
     }
 }

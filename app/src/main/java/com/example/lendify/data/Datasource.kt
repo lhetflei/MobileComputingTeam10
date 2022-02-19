@@ -71,6 +71,7 @@ class Datasource {
     }
 
         fun loadItems2(): ArrayList<Items> {
+
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
@@ -81,9 +82,12 @@ class Datasource {
                                     itemSnapshot.child("text").value.toString(),
                                     itemSnapshot.child("bild").value.toString(),
                                     itemSnapshot.child("user").value.toString(),
-                                    itemSnapshot.child("price").value.toString().toInt()
+                                    itemSnapshot.child("price").value.toString().toInt(),
+                                    itemSnapshot.child("id").value.toString()
+
                                 )
                             )
+
                             Log.i(TAG, itemlist2.toString())
                             Log.i(TAG, itemSnapshot.child("user").value.toString())
                         }

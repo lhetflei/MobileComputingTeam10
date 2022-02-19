@@ -5,6 +5,6 @@ import androidx.annotation.StringRes
 data class Items(val text :String ?=null,
                  val bild: String ?=null,
                  val user:String ?=null,
-                 val price: Int ?=null, ) {
-
+                 val price: Int ?=null,
+                 val id: String?=null) {
 }
