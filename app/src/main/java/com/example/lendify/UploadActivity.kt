@@ -29,7 +29,7 @@ class UploadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.setTitle("Gegenstand zum Verleih freigeben")
         binding.buttonUpload.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==

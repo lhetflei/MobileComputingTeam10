@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class thirdFragment : Fragment(R.layout.fragment_third) {
 
@@ -44,14 +45,19 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
             val myDataset = Datasource().loadItems2()
             delay(350)
             Log.i(ContentValues.TAG, "main")
-            binding.recyclerView.adapter = ItemAdapter(myDataset)
-        }
+            try {
+                binding.recyclerView.adapter = ItemAdapter(myDataset)
+            } catch (e: Exception) {
+                //reload falls datenbank zu langsam
+                val intent = Intent(activity, PersonalActivity::class.java)
+                startActivity(intent)
+            }
 
-        binding.buttonAdd.setOnClickListener{
-            val intent = Intent(context,UploadActivity::class.java)
-            startActivity(intent)
+            binding.buttonAdd.setOnClickListener {
+                val intent = Intent(context, UploadActivity::class.java)
+                startActivity(intent)
+            }
         }
-
 
     }
     override fun onDestroy() {

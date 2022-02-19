@@ -2,6 +2,7 @@ package com.example.lendify
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -59,19 +60,13 @@ class firstFragment : Fragment(R.layout.fragment_first) {
             var storageRef = FirebaseStorage.getInstance().reference.child(temp)
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                binding.imageView3.setImageBitmap(bitmap)
+                binding.imageView3.setImageBitmap(Bitmap.createScaledBitmap(bitmap,125,125,true))
             }
 
         }
-
-
-
-
-
-
     }
     fun updatemail(){
-        if(binding.editTextTextEmailAddress.text.toString()!=""&&binding.editTextTextPassword2.text.toString()!=""){
+        if(binding.editTextTextEmailAddress.text.toString()!=""||binding.editTextTextPassword2.text.toString()!=""){
         ref.signInWithEmailAndPassword(ref.currentUser!!.email.toString(),binding.editTextTextPassword2.text.toString().trim())
         ref.currentUser!!.updateEmail(binding.editTextTextEmailAddress.text.toString().trim())
         binding.TextViewEmail.text=binding.editTextTextEmailAddress.text
@@ -80,6 +75,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         else Toast.makeText(activity,"Neue Email eingeben",Toast.LENGTH_SHORT).show()
     }
     fun updatepasswort(){
+        if(binding.editTextTextPassword3.text.toString()!=""||binding.editTextTextPassword4.text.toString()!=""||binding.editTextTextPassword4.text.toString()!=""){
         if(binding.editTextTextPassword4.text.toString().trim()==binding.editTextTextPassword5.text.toString().trim()) {
             ref.signInWithEmailAndPassword(ref.currentUser!!.email.toString(),binding.editTextTextPassword3.text.toString().trim())
             ref.currentUser!!.updatePassword(binding.editTextTextPassword4.text.toString().trim()).addOnSuccessListener {
@@ -92,6 +88,9 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         {
             Toast.makeText(activity,"Passwort ändern fehlgeschlagen",Toast.LENGTH_SHORT).show()
         }
+    }
+        else
+            Toast.makeText(activity,"Passwort ändern fehlgeschlagen",Toast.LENGTH_SHORT).show()
     }
     override fun onDestroy() {
         super.onDestroy()

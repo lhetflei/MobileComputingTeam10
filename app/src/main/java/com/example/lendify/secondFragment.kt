@@ -2,6 +2,7 @@ package com.example.lendify
 
 import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.okhttp.Dispatcher
 import kotlinx.coroutines.*
 import java.io.File
+import java.lang.Exception
 
 class secondFragment : Fragment(R.layout.fragment_second) {
     private var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
@@ -44,9 +46,16 @@ class secondFragment : Fragment(R.layout.fragment_second) {
         super.onViewCreated(view, savedInstanceState)
         GlobalScope.launch(Dispatchers.Main) {
             val myDataset = Datasource().loadItems()
-            delay(350)
-            Log.i(TAG, "main")
-            binding.recyclerView.adapter = ItemAdapter(myDataset)
+            delay(250) //warten auf datenbank
+            try {
+                binding.recyclerView.adapter = ItemAdapter(myDataset)
+            }
+            catch (e:Exception)
+            {
+                //reload falls datenbank zu langsam
+                val intent = Intent(activity,PersonalActivity::class.java)
+                startActivity(intent)
+            }
         }
 
 
