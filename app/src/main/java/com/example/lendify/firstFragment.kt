@@ -46,7 +46,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
             val intent = Intent(activity,MainActivity::class.java)
             startActivity(intent)
         }
-        var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference(ref.uid.toString())
+        var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference()
         binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
         binding.ButtonEditEmail.setOnClickListener { updatemail()}
         binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
@@ -55,7 +55,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         }
         Log.i(TAG,ref.uid.toString() )
 
-        database.child("bild").get().addOnSuccessListener {
+        database.child(ref.uid.toString()).get().addOnSuccessListener {
             var temp = it.value.toString()
             var storageRef = FirebaseStorage.getInstance().reference.child(temp)
             storageRef.getFile(localfile).addOnSuccessListener {

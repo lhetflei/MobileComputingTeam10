@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".firstFragment">
+    tools:context=".firstFragment"
+    android:textColor = "?android:textColorPrimary">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -32,7 +33,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:text="Persönliche Informationen"
-            android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
