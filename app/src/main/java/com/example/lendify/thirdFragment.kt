@@ -62,10 +62,6 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
 
                 })
             } catch (e: Exception) {
-                delay(1000)
-                //reload falls datenbank zu langsam
-                val intent = Intent(activity, PersonalActivity::class.java)
-                startActivity(intent)
             }
 
             binding.buttonAdd.setOnClickListener {
