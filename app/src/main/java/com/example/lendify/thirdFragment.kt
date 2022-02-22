@@ -47,7 +47,7 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         GlobalScope.launch(Dispatchers.Main) {
             val myDataset = Datasource().loadItems2()
-            delay(350)
+            delay(250)
             Log.i(ContentValues.TAG, "main")
             try {
                 var adapter = ItemAdapter2(myDataset)
@@ -62,6 +62,7 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
 
                 })
             } catch (e: Exception) {
+                delay(1000)
                 //reload falls datenbank zu langsam
                 val intent = Intent(activity, PersonalActivity::class.java)
                 startActivity(intent)

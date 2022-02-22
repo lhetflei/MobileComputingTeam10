@@ -69,6 +69,7 @@ class secondFragment : Fragment(R.layout.fragment_second) {
             }
             catch (e:Exception)
             {
+                delay(1000)
                 //reload falls datenbank zu langsam
                 val intent = Intent(activity,PersonalActivity::class.java)
                 startActivity(intent)

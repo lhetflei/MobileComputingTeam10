@@ -209,7 +209,7 @@ class UploadActivity : AppCompatActivity() {
                     var takenImage: Bitmap = data?.extras?.get("data") as Bitmap
                     binding.firebaseImage.setImageBitmap(takenImage)
                     var bytes = ByteArrayOutputStream()
-                    takenImage.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
+                    takenImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
                     ImageBytes = bytes.toByteArray()
 
 
