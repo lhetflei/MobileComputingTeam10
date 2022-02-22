@@ -32,9 +32,12 @@
             android:layout_height="56dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
             android:text="Persönliche Informationen"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/TextViewEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +91,7 @@
             android:ems="10"
             android:hint="Neue Email"
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -102,7 +105,7 @@
             android:ems="10"
             android:hint="Passwort"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
