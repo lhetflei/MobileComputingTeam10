@@ -6,7 +6,8 @@
     android:layout_marginRight="8dp"
     android:layout_marginBottom="5dp"
     android:background="@drawable/customborder"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:textColor = "?android:textColorPrimary">
 
     <TextView
         android:id="@+id/text_name"
@@ -17,7 +18,7 @@
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="250dp"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop" />
 
@@ -33,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:textColor="@android:color/black"
             android:textSize="22dp"
             tools:text="testtext" />
 
@@ -45,7 +45,6 @@
             android:ellipsize="middle"
             android:gravity="right"
             android:text="10$"
-            android:textColor="@android:color/black"
             android:textSize="22dp" />
     </LinearLayout>
 

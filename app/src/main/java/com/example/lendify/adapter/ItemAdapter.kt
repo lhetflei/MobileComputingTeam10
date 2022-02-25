@@ -71,7 +71,7 @@ class ItemAdapter(
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 try {
-                    holder.bild.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 350, 280, true))
+                    holder.bild.setImageBitmap(Bitmap.createScaledBitmap(bitmap,550, 500, true))
                 }
                 catch(e:Exception)
                 {

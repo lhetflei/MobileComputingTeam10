@@ -36,12 +36,18 @@
         <entry key="..\:/Users/loris/Downloads/MobileComputingTeam10/app/src/main/res/menu/bottom_menu.xml" value="0.35625" />
         <entry key="..\:/Users/loris/Downloads/MobileComputingTeam10/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/customborder.xml" value="0.215" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_add.xml" value="0.201" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_camera.xml" value="0.201" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_home.xml" value="0.201" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_my_offers.xml" value="0.1345" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_main.xml" value="0.1887031408308004" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_personal.xml" value="0.1702127659574468" />
-        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_first.xml" value="0.4528302049755674" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_upload.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_first.xml" value="0.24085365853658536" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_second.xml" value="0.38177083333333334" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_third.xml" value="0.1702127659574468" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/list_item.xml" value="0.2988679352838745" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/list_item2.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/menu/bottom_menu.xml" value="0.38177083333333334" />
       </map>
     </option>
