@@ -5,25 +5,15 @@
       <map>
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_baseline.xml" value="0.253" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_home.xml" value="0.253" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_send.xml" value="0.2735" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_chat.xml" value="0.33" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_personal.xml" value="0.276268115942029" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_registration.xml" value="0.33" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_upload.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/chat_rows_receive.xml" value="0.26875" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/chat_rows_sent.xml" value="0.2911458333333333" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/chat_user_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_chat.xml" value="0.33" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_first.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_fourth.xml" value="0.22" />
+        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_fourth.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_second.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_third.xml" value="0.276268115942029" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/item_images_my_offers.xml" value="0.3523550724637681" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/list_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/list_item2.xml" value="0.26875" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/user_latest_messages.xml" value="0.26875" />
-        <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/layout/user_layout.xml" value="0.25" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="..\:/Users/Pascal/AndroidStudioProjects/MobileComputingTeam10/app/src/main/res/xml/file_paths.xml" value="0.2056159420289855" />
         <entry key="..\:/Users/loris/Downloads/Lendify/app/src/main/res/layout/activity_main.xml" value="0.4166666666666667" />
@@ -40,10 +30,17 @@
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_camera.xml" value="0.201" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_home.xml" value="0.201" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/drawable/ic_my_offers.xml" value="0.1345" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_chat.xml" value="0.1887031408308004" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_main.xml" value="0.1887031408308004" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_personal.xml" value="0.1702127659574468" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_registration.xml" value="0.23556231003039513" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/activity_upload.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/chat_rows_receive.xml" value="0.1527777777777778" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/chat_rows_sent.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/chat_user_list.xml" value="0.1887031408308004" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_chat.xml" value="0.1887031408308004" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_first.xml" value="0.24085365853658536" />
+        <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_fourth.xml" value="0.1887031408308004" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_second.xml" value="0.38177083333333334" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/fragment_third.xml" value="0.1702127659574468" />
         <entry key="..\:/Users/loris/StudioProjects/MobileComputingTeam10/app/src/main/res/layout/list_item.xml" value="0.2988679352838745" />

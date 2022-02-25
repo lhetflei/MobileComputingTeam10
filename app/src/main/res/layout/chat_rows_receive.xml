@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:textColor = "?android:textColorPrimary">
 
     <TextView
         android:id="@+id/message_rows_receive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:background="#D3D3D3"
-        android:padding="16dp"
         android:maxWidth="280dp"
+        android:padding="16dp"
         android:text="Das ist eine Beispielnachricht, die endlos lang gehen soll außer"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/message_rows_receive_imageview"
-        app:layout_constraintTop_toTopOf="@+id/message_rows_receive_imageview" />
+        app:layout_constraintTop_toTopOf="@+id/message_rows_receive_imageview"
+        android:background="@drawable/customborder"/>
 
     <ImageView
         android:id="@+id/message_rows_receive_imageview"

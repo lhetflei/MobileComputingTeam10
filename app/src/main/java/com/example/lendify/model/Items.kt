@@ -7,5 +7,5 @@ data class Items(val text :String ?=null,
                  val user:String ?=null,
                  val price: Int ?=null,
                  val id: String?=null,
-                    val userID: String? = null) {
+                    val userID: String? = "") {
 }
