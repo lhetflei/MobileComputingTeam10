@@ -86,6 +86,7 @@ class Datasource {
                                     itemSnapshot.child("bild").value.toString(),
                                     itemSnapshot.child("user").value.toString(),
                                     itemSnapshot.child("price").value.toString().toInt(),
+                                    itemSnapshot.child("id").value.toString()
 
                                 )
                             )
