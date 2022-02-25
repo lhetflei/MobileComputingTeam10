@@ -41,15 +41,18 @@ class UserAdapter(private val add_user: Context, private val userList: ArrayList
         holder.user_name.text = user.userName
         Glide.with(add_user).load(user.userAvatar).placeholder(R.drawable.ic_baseline_person_24)
 
-        var storageRef = FirebaseStorage.getInstance().reference.child(user.userAvatar.toString())
-        storageRef.getFile(localfile).addOnSuccessListener {
-            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-            try {
-                holder.user_avatar.setImageBitmap(Bitmap.createScaledBitmap(bitmap,550, 500, true))
-            }
-            catch(e: Exception)
-            {
-                holder.user_avatar.setImageBitmap(bitmap)
+        //User avatar
+        if (user.userAvatar != "") {
+            var storageRef = FirebaseStorage.getInstance().reference.child(user.userAvatar.toString())
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                try {
+                    holder.user_avatar.setImageBitmap(Bitmap.createScaledBitmap(bitmap,550, 500, true))
+                }
+                catch(e: Exception)
+                {
+                    holder.user_avatar.setImageBitmap(bitmap)
+                }
             }
         }
 

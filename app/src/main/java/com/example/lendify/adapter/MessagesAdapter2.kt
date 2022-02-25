@@ -33,6 +33,7 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
     val MSG_SENT_CODE = 2
     var firebaseUser: FirebaseUser? = null
     var databaseReference: DatabaseReference? = null
+    var avatar_databaseReference: DatabaseReference? = null
     var bool_receive: Boolean? = null
     var ImageUri: Uri? = null
     val localfile = File.createTempFile("tempImage","jpg")
@@ -70,28 +71,63 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference()
+        avatar_databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("user")
         val MSG = messageList[position]
         Log.i(TAG, MSG.toString())
         if (firebaseUser!!.uid.toString() == MSG.receiverID.toString()) {
             holder.msg_receive.text = MSG.message
+            //Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
 
-            /*Glide.with(add_message).load(MSG.userAvatar).placeholder(R.drawable.ic_baseline_person_24)
-
-            var storageRef = FirebaseStorage.getInstance().reference.child(user.userAvatar.toString())
-            storageRef.getFile(localfile).addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-                try {
-                    holder.user_avatar.setImageBitmap(Bitmap.createScaledBitmap(bitmap,550, 500, true))
+            if(MSG.userAvatar != "") {
+                var storageRef =
+                    FirebaseStorage.getInstance().reference.child(MSG.userAvatar.toString())
+                storageRef.getFile(localfile).addOnSuccessListener {
+                    val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    try {
+                        holder.avatar_receive.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 550, 500, true))
+                    } catch (e: Exception) {
+                        Glide.with(add_message).load(R.drawable.ic_baseline_person_24).into(holder.avatar_receive)
+                    }
                 }
-                catch(e: Exception)
-                {
-                    holder.user_avatar.setImageBitmap(bitmap)
-                }
 
-            }*/
+
+                /*try {
+                    holder.avatar_receive.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 550, 500, true))
+                } catch (e: Exception) {
+                    Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
+                }*/
+
+                /*else {
+                    Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
+                }*/
+            }
         }
         else {
             holder.msg_send.text = MSG.message
+
+            if(MSG.userAvatar != "") {
+                var storageRef =
+                    FirebaseStorage.getInstance().reference.child(MSG.userAvatar.toString())
+                storageRef.getFile(localfile).addOnSuccessListener {
+                    val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    try {
+                        holder.avatar_send.setImageBitmap(
+                            Bitmap.createScaledBitmap(
+                                bitmap,
+                                550,
+                                500,
+                                true
+                            )
+                        )
+                    } catch (e: Exception) {
+                        Glide.with(add_message).load(holder.avatar_send).placeholder(R.drawable.ic_baseline_person_24)
+                    }
+                }
+
+                /*else {
+                    Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
+                }*/
+            }
         }
     }
 

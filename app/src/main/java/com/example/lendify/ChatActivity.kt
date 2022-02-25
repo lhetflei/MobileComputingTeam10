@@ -1,6 +1,8 @@
 package com.example.lendify
 
 import android.content.ContentValues.TAG
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +21,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.protobuf.Value
+import java.io.File
 
 
 class ChatActivity : AppCompatActivity() {
@@ -26,7 +31,11 @@ class ChatActivity : AppCompatActivity() {
     lateinit var binding: ActivityChatBinding
     var firebaseUser: FirebaseUser? = null
     var databaseReference: DatabaseReference? = null
+    var avatar_databaseReference: DatabaseReference? = null
+    val localfile = File.createTempFile("tempImage","jpg")
     private var messageList = ArrayList<Messages>()
+    private var ref = FirebaseAuth.getInstance()
+    var str_avatar: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +49,13 @@ class ChatActivity : AppCompatActivity() {
         firebaseUser = FirebaseAuth.getInstance().currentUser
         databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("user").child(userID!!)
 
+        get_avatar(firebaseUser!!.uid)
 
         //Refresh Data
         databaseReference!!.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
                 supportActionBar?.title = user!!.userName
-                //Glide.with(this@ChatActivity).load(user.userAvatar).into(findViewById(R.id.user_avatar))
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -59,8 +68,13 @@ class ChatActivity : AppCompatActivity() {
         binding.imageviewSend.setOnClickListener{
             if (binding.textMessage.text.isNotEmpty()) {
                 var message = binding.textMessage.text.toString().trim()
-                msg_send(message, userID, firebaseUser!!.uid)
+
+
+
+                msg_send(message, userID, firebaseUser!!.uid, str_avatar)
                 binding.textMessage.setText(null)
+
+                //TODO dropdown tastatur
             }
             else {
                 Toast.makeText(this, "Geben Sie zuerst eine Nachricht ein...", Toast.LENGTH_SHORT).show()
@@ -95,13 +109,29 @@ class ChatActivity : AppCompatActivity() {
         })
     }
     //Upload message zo firebase
-    private fun msg_send(message: String, receiverID: String, senderID: String) {
+    private fun msg_send(message: String, receiverID: String, senderID: String, userAvatar: String) {
             var msg_send_database:DatabaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference()
 
             var hashMap: HashMap<String, String> = HashMap()
             hashMap.put("message", message)
             hashMap.put("receiverID", receiverID)
             hashMap.put("senderID", senderID)
+            hashMap.put("userAvatar", userAvatar)
             msg_send_database!!.child("messages").push().setValue(hashMap)
+    }
+    //Get Avatar from User
+    private fun get_avatar(userID: String) {
+
+        avatar_databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("user")
+        avatar_databaseReference!!.child(userID).get().addOnSuccessListener {
+
+            if (it.exists()) {
+                str_avatar = it.child("userAvatar").value.toString()
+            }
+            else {
+                str_avatar = ""
+            }
+        }
+
     }
 }
