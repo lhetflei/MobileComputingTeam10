@@ -50,9 +50,9 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
             delay(350)
             Log.i(ContentValues.TAG, "main")
             try {
-                var adapter = ItemAdapter2(myDataset)
+                var adapter = ItemAdapter(myDataset)
                 binding.recyclerView.adapter = adapter
-                adapter.setOnItemClickListener(object : ItemAdapter2.onItemClickListener{
+                adapter.setOnItemClickListener(object : ItemAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
                         var delete = Items(null,null,null,null)
                         database.child(myDataset[position].id.toString()).removeValue()

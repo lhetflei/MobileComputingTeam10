@@ -77,11 +77,15 @@ class firstFragment : Fragment(R.layout.fragment_first) {
     fun updatemail(){
         if(binding.editTextTextEmailAddress.text.toString()!=""||binding.editTextTextPassword2.text.toString()!=""){
         ref.signInWithEmailAndPassword(ref.currentUser!!.email.toString(),binding.editTextTextPassword2.text.toString().trim())
-        ref.currentUser!!.updateEmail(binding.editTextTextEmailAddress.text.toString().trim())
-        binding.TextViewEmail.text=binding.editTextTextEmailAddress.text
+        ref.currentUser!!.updateEmail(binding.editTextTextEmailAddress.text.toString().trim()).addOnSuccessListener {
+            binding.TextViewEmail.text=binding.editTextTextEmailAddress.text
             Toast.makeText(activity,"Email geändert",Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener{e->
+            Toast.makeText(activity,"Fehler: ${e.message}",Toast.LENGTH_SHORT).show()
         }
-        else Toast.makeText(activity,"Neue Email eingeben",Toast.LENGTH_SHORT).show()
+
+        }else Toast.makeText(activity,"Neue Email eingeben",Toast.LENGTH_SHORT).show()
+
     }
     fun updatepasswort(){
         if(binding.editTextTextPassword3.text.toString()!=""||binding.editTextTextPassword4.text.toString()!=""||binding.editTextTextPassword4.text.toString()!=""){
@@ -175,6 +179,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         val storageReference = FirebaseStorage.getInstance().getReference("Bilder/${ref.uid.toString()}")
 
         database2.child(ref.uid.toString()).setValue("Bilder/${ref.uid.toString()}")
+        database2.child("user").child(ref.uid!!).child("userAvatar").setValue("Bilder/${ref.uid.toString()}")
 
         storageReference.putFile(ImageUri!!).
         addOnSuccessListener {
