@@ -13,4 +13,8 @@
         android:id="@+id/thirdFragment"
         android:icon="@drawable/ic_my_offers"
         android:title="Meine Angebote" />
+    <item
+        android:id="@+id/fourthFragment"
+        android:icon="@drawable/ic_baseline_message_24"
+        android:title="Nachrichten" />
 </menu>

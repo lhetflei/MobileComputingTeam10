@@ -35,6 +35,7 @@ class ItemAdapter(
         val text :TextView =view.findViewById(R.id.item_title)
         val price :TextView =view.findViewById(R.id.item_price)
         val bild :ImageView =view.findViewById(R.id.item_image)
+        val name: TextView = view.findViewById(R.id.text_name)
 
         init{
             itemView.setOnClickListener {
@@ -64,6 +65,7 @@ class ItemAdapter(
         val item = dataset[position]
         holder.text.text = item.text
         holder.price.text = item.price.toString()+"€/Tag"
+        holder.name.text = item.userID.toString()
 
             var storageRef = FirebaseStorage.getInstance().reference.child(item.bild.toString())
             storageRef.getFile(localfile).addOnSuccessListener {

@@ -2,6 +2,7 @@ package com.example.lendify
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -17,6 +18,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Base64
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -43,15 +45,19 @@ class UploadActivity : AppCompatActivity() {
     val formatter = java.text.SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
     val now = Date()
     val fileName = formatter.format(now)
-    var database =
-        FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app")
-            .getReference()
-
+    var username: String = ""
+    var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference()
+    var database_user = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("user")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.setTitle("Gegenstand zum Verleih freigeben")
+
+        Log.i(ContentValues.TAG, database.child("userID").toString())
+        database_user.child(ref.uid!!).get().addOnSuccessListener {
+            username = it.child("userName").value.toString()
+        }
 
         binding.imageViewGallery.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -67,7 +73,6 @@ class UploadActivity : AppCompatActivity() {
                 pickImageFromGallery();
             }
         }
-
 
         binding.imageViewCamera.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -223,9 +228,10 @@ class UploadActivity : AppCompatActivity() {
         }
         uploaddatabase()
     }
+
     fun uploaddatabase()
     {
-        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt(),ref.uid.toString()+now.toString())
+        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt(),ref.uid.toString()+now.toString(), username.toString())
         database.child("angebot").child(ref.uid.toString()+now.toString()).setValue(add)
     }
 }

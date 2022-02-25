@@ -11,11 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lendify.adapter.ItemAdapter
 import com.example.lendify.adapter.ItemAdapter2
 import com.example.lendify.data.Datasource
-import com.example.lendify.databinding.FragmentFirstBinding
-import com.example.lendify.databinding.FragmentSecondBinding
 import com.example.lendify.databinding.FragmentThirdBinding
 import com.example.lendify.model.Items
 import com.google.firebase.database.FirebaseDatabase
@@ -47,7 +44,7 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         GlobalScope.launch(Dispatchers.Main) {
             val myDataset = Datasource().loadItems2()
-            delay(350)
+            delay(500)
             Log.i(ContentValues.TAG, "main")
             try {
                 var adapter = ItemAdapter2(myDataset)
@@ -63,8 +60,8 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
                 })
             } catch (e: Exception) {
                 //reload falls datenbank zu langsam
-                val intent = Intent(activity, PersonalActivity::class.java)
-                startActivity(intent)
+                /*val intent = Intent(activity, PersonalActivity::class.java)
+                startActivity(intent)*/
             }
 
             binding.buttonAdd.setOnClickListener {

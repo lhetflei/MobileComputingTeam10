@@ -20,6 +20,8 @@ import kotlinx.coroutines.*
 class Datasource {
 
     private var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
+    private var database_user = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("user")
+    var username: String = ""
     var itemlist = arrayListOf<Items>()
     var itemlist2 = arrayListOf<Items>()
     private var ref = FirebaseAuth.getInstance()
@@ -34,10 +36,12 @@ class Datasource {
                                 itemSnapshot.child("text").value.toString(),
                                 itemSnapshot.child("bild").value.toString(),
                                 itemSnapshot.child("user").value.toString(),
-                                itemSnapshot.child("price").value.toString().toInt()
+                                itemSnapshot.child("price").value.toString().toInt(),
+                                itemSnapshot.child("id").value.toString(),
+                                itemSnapshot.child("userID").value.toString()
                             )
                         )
-                        Log.i(TAG, itemlist.toString())
+                        //Log.i(TAG, itemlist.toString())
                     }
 
                 }
@@ -66,7 +70,6 @@ class Datasource {
         /*return arrayListOf<Items>(
             Items("text","Bilder/rwb2.jpg",10),
         )*/
-
         return itemlist
     }
 
@@ -83,13 +86,13 @@ class Datasource {
                                     itemSnapshot.child("bild").value.toString(),
                                     itemSnapshot.child("user").value.toString(),
                                     itemSnapshot.child("price").value.toString().toInt(),
-                                    itemSnapshot.child("id").value.toString()
 
                                 )
                             )
 
                             Log.i(TAG, itemlist2.toString())
                             Log.i(TAG, itemSnapshot.child("user").value.toString())
+
                         }
 
                     }
@@ -101,6 +104,7 @@ class Datasource {
                 }
 
             })
+
 
             return itemlist2
         }
