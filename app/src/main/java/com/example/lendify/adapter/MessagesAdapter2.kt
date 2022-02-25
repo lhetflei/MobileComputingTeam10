@@ -2,7 +2,10 @@ package com.example.lendify.adapter
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.Image
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +13,29 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.lendify.R
 import com.example.lendify.model.Messages
 import com.example.lendify.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
+import java.lang.Exception
+
 
 class MessagesAdapter2(private val add_message: Context, private val messageList :ArrayList<Messages>): RecyclerView.Adapter<MessagesAdapter2.ViewHolder>() {
 
     val MSG_RECEIVE_CODE = 1
     val MSG_SENT_CODE = 2
     var firebaseUser: FirebaseUser? = null
+    var databaseReference: DatabaseReference? = null
     var bool_receive: Boolean? = null
+    var ImageUri: Uri? = null
+    val localfile = File.createTempFile("tempImage","jpg")
 
     /*class ViewHolderSend(itemView: View): RecyclerView.ViewHolder(itemView) {
         val chat_message = itemView.findViewById<TextView>(R.id.message_rows_sent)
@@ -56,12 +69,26 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //holder.messages_received.text = "${content[position].message}"
-        //val message = messages[position]
+        databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference()
         val MSG = messageList[position]
         Log.i(TAG, MSG.toString())
         if (firebaseUser!!.uid.toString() == MSG.receiverID.toString()) {
             holder.msg_receive.text = MSG.message
+
+            /*Glide.with(add_message).load(MSG.userAvatar).placeholder(R.drawable.ic_baseline_person_24)
+
+            var storageRef = FirebaseStorage.getInstance().reference.child(user.userAvatar.toString())
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                try {
+                    holder.user_avatar.setImageBitmap(Bitmap.createScaledBitmap(bitmap,550, 500, true))
+                }
+                catch(e: Exception)
+                {
+                    holder.user_avatar.setImageBitmap(bitmap)
+                }
+
+            }*/
         }
         else {
             holder.msg_send.text = MSG.message
@@ -81,5 +108,17 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
 
     override fun getItemCount(): Int {
         return messageList.size
+    }
+
+    private fun get_avatar() {
+        databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference()
+        databaseReference!!.child(firebaseUser!!.uid.toString()).get().addOnSuccessListener {
+            var image = it.value.toString()
+            var storageRef = FirebaseStorage.getInstance().reference.child(image)
+            storageRef.getFile(localfile).addOnCanceledListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+
+            }
+        }
     }
 }

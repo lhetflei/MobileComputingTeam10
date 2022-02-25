@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.lendify.adapter.MessagesAdapter2
 import com.example.lendify.adapter.UserAdapter
 import com.example.lendify.databinding.ActivityChatBinding
@@ -45,6 +46,7 @@ class ChatActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
                 supportActionBar?.title = user!!.userName
+                //Glide.with(this@ChatActivity).load(user.userAvatar).into(findViewById(R.id.user_avatar))
             }
 
             override fun onCancelled(error: DatabaseError) {
