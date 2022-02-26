@@ -135,7 +135,7 @@ class UploadActivity : AppCompatActivity() {
                 uploaddatabase()
                 Toast.makeText(this, "Das Bild wurde erfolgreich hochgeladen!", Toast.LENGTH_SHORT).show()
                 if (progressDialog.isShowing) progressDialog.dismiss()
-                val intent = Intent(this,thirdFragment::class.java)
+                val intent = Intent(this,PersonalActivity::class.java)
                 startActivity(intent)
                 ImageUri = null
             }.addOnFailureListener{
@@ -152,7 +152,7 @@ class UploadActivity : AppCompatActivity() {
                 uploaddatabase()
                 Toast.makeText(this, "Das Bild wurde erfolgreich hochgeladen!", Toast.LENGTH_SHORT).show()
                 if (progressDialog.isShowing) progressDialog.dismiss()
-                val intent = Intent(this,thirdFragment::class.java)
+                val intent = Intent(this,PersonalActivity::class.java)
                 startActivity(intent)
                 ImageBytes = null
             }.addOnFailureListener{

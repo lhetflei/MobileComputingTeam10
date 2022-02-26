@@ -189,7 +189,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
         storageReference.putFile(ImageUri!!).
         addOnSuccessListener {
             Toast.makeText(context, "Das Bild wurde erfolgreich hochgeladen!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context,thirdFragment::class.java)
+            val intent = Intent(context,PersonalActivity::class.java)
             startActivity(intent)
             ImageUri = null
         }.addOnFailureListener{
