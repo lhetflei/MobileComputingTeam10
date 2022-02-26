@@ -57,8 +57,7 @@ class thirdFragment : Fragment(R.layout.fragment_third) {
                     override fun onItemClick(position: Int) {
 
                         database.child(myDataset[position].id.toString()).removeValue()
-                        Log.i(TAG, database.child(myDataset[position].id.toString()).toString())
-                       // database.child(myDataset[position].text.toString()).parent!!.toString()
+
                         Toast.makeText(context,"Gegenstand erfolgreich entfernt",Toast.LENGTH_SHORT).show()
                         val intent = Intent(context, PersonalActivity::class.java)
                         startActivity(intent)

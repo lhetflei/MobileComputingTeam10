@@ -53,7 +53,6 @@ class ItemAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
-            //.inflate(R.layout.list_item, parent, false)
             .inflate(R.layout.list_item3, parent, false)
         return ItemAdapter.ItemViewHolder(adapterLayout,mListener)
     }

@@ -20,7 +20,7 @@ import kotlinx.coroutines.*
 class Datasource {
 
     private var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
-    private var database_user = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("user")
+
     var username: String = ""
     var itemlist = arrayListOf<Items>()
     var itemlist2 = arrayListOf<Items>()
@@ -53,23 +53,6 @@ class Datasource {
             }
 
         })
-
-        //itemlist.add(Items(null, "Bilder/rwb2.jpg", null))
-        //itemlist.add(Items("testtext1","Bilder/rwb2.jpg",15))
-        // itemlist.add(Items("testtext1","Bilder/rwb2.jpg",10))
-        //itemlist.add(Items("testtext1","Bilder/2022_02_16_20_16_55",15))
-        //itemlist.add(Items("testtext1","Bilder/2022_02_16_20_30_13",15))
-
-        /* database.child("1").get().addOnSuccessListener {
-            itemlist.add(Items(it.child("text").value.toString(),it.child("bild").value.toString(),it.child("price").value.toString().toInt()))
-            Log.i(TAG, itemlist.toString())
-
-        }
-        Log.i(TAG, itemlist.toString())*/
-
-        /*return arrayListOf<Items>(
-            Items("text","Bilder/rwb2.jpg",10),
-        )*/
         return itemlist
     }
 

@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.ButtonLogin.setOnClickListener {
             validateLogin()
-            firebaseLogin()
         }
         binding.TextViewRegister.setOnClickListener { val intent = Intent(this,RegistrationActivity::class.java)
             startActivity(intent) }
@@ -56,18 +55,19 @@ class MainActivity : AppCompatActivity() {
     } //Prüfen ob User eingeloggt ist
 
     private fun validateLogin(){
-        val email = binding.EditTextNameL.text.toString().trim()
-        val password = binding.EditTextPasswordL.text.toString().trim()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            binding.EditTextNameL.error = "Falsches E-Mail format!"
-        }
-        else if (TextUtils.isEmpty(password)){
-            binding.EditTextPasswordL.error = "Bitte geben Sie ein Passwort ein!"
-        }
-        else{
-            firebaseLogin()
-        }
+        if(binding.EditTextPasswordL.text.toString().isEmpty()||binding.EditTextNameL.text.toString().isEmpty()) {
+            if (binding.EditTextPasswordL.text.toString().isEmpty()) {
+                binding.EditTextPasswordL.error = "Bitte geben Sie ein Passwort ein!"
+            }
+            if (binding.EditTextNameL.text.toString().isEmpty()) {
+                binding.EditTextNameL.error = "Bitte geben Sie eine Email ein!"
+
+            }
+        }else {
+                firebaseLogin()
+            }
+
     } //Gültigkeit der Eingabedaten prüfen
 
     private fun firebaseLogin(){

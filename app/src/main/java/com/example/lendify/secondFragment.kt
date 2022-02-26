@@ -30,8 +30,6 @@ import java.io.File
 import java.lang.Exception
 
 class secondFragment : Fragment(R.layout.fragment_second) {
-    private var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
-    var itemlist = arrayListOf<Items>()
     private var _binding: FragmentSecondBinding?=null
     private val binding get()=_binding!!
     private val myDataset = arrayListOf<Items>()
@@ -89,31 +87,6 @@ class secondFragment : Fragment(R.layout.fragment_second) {
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
-    }
-    fun getItemList() {
-        val firebase: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
-
-        //Refresh
-        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("angebote")
-        databaseReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                myDataset.clear()
-                for (dataSnapShot: DataSnapshot in snapshot.children) {
-                    val item = dataSnapShot.getValue(Items::class.java)
-
-                    //if (user!!.userID != firebase.uid) {
-                    /*if (item!!.userID != firebase.uid)  {
-                        myDataset.add(item)
-                    }*/
-                }
-                val user_a = ItemAdapter3(context!!, myDataset)
-                binding.recyclerView.adapter = user_a
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context,"Error", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 
 }

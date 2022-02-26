@@ -34,11 +34,8 @@ class firstFragment : Fragment(R.layout.fragment_first) {
     private var ref = FirebaseAuth.getInstance()
     var ImageUri: Uri? = null
     val localfile = File.createTempFile("tempImage","jpg")
-    var database2 =
-        FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app")
-            .getReference()
+    var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference()
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -50,12 +47,12 @@ class firstFragment : Fragment(R.layout.fragment_first) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //logoutbutton
         binding.ButtonEditName.setOnClickListener {
             ref.signOut()
             val intent = Intent(activity,MainActivity::class.java)
             startActivity(intent)
         }
-        var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference()
         binding.TextViewEmail.text=ref.currentUser!!.email!!.toString()
         binding.ButtonEditEmail.setOnClickListener { updatemail()}
         binding.ButtonEditPasswort.setOnClickListener { updatepasswort() }
@@ -128,14 +125,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when(requestCode){
-            /*PERMISSION_CODE->{
-                if (grantResults.size >0 && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED){
-                }
-                else{
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
-                }
-            }*/
+
             firstFragment.IMAGE_PICK_CODE ->{
                 if (grantResults.size >0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
@@ -183,8 +173,8 @@ class firstFragment : Fragment(R.layout.fragment_first) {
 
         val storageReference = FirebaseStorage.getInstance().getReference("Bilder/${ref.uid.toString()}")
 
-        database2.child(ref.uid.toString()).setValue("Bilder/${ref.uid.toString()}")
-        database2.child("user").child(ref.uid!!).child("userAvatar").setValue("Bilder/${ref.uid.toString()}")
+        database.child(ref.uid.toString()).setValue("Bilder/${ref.uid.toString()}")
+        database.child("user").child(ref.uid!!).child("userAvatar").setValue("Bilder/${ref.uid.toString()}")
 
         storageReference.putFile(ImageUri!!).
         addOnSuccessListener {
