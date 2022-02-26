@@ -17,16 +17,18 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/message_rows_sent_imageview"
         app:layout_constraintTop_toTopOf="@+id/message_rows_sent_imageview"
-        android:background="@drawable/customborder"/>
+        android:background="@drawable/customborder_messages"/>
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/message_rows_sent_imageview"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
+        app:civ_border_color="#B7717171"
+        app:civ_border_width="3px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/googleg_standard_color_18" />
+        android:src="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

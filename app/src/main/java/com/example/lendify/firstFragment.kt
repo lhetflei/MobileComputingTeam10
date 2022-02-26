@@ -158,7 +158,7 @@ class firstFragment : Fragment(R.layout.fragment_first) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK && data != null){
 
             when(requestCode){
                 firstFragment.IMAGE_PICK_CODE ->{
@@ -170,6 +170,11 @@ class firstFragment : Fragment(R.layout.fragment_first) {
 
                 }
             }
+        }
+        else{
+            //TODO first fragment anstatt activity aufrufen
+            val intent = Intent(context,PersonalActivity::class.java)
+            startActivity(intent)
         }
         uploaddatabase()
     }

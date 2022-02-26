@@ -1,11 +1,14 @@
 package com.example.lendify
 
 import android.content.ContentValues.TAG
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +19,7 @@ import com.example.lendify.databinding.ActivityChatBinding
 import com.example.lendify.databinding.ActivityPersonalBinding
 import com.example.lendify.model.Messages
 import com.example.lendify.model.User
+import com.google.api.Context
 import com.google.api.Distribution
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -69,12 +73,9 @@ class ChatActivity : AppCompatActivity() {
             if (binding.textMessage.text.isNotEmpty()) {
                 var message = binding.textMessage.text.toString().trim()
 
-
-
                 msg_send(message, userID, firebaseUser!!.uid, str_avatar)
                 binding.textMessage.setText(null)
-
-                //TODO dropdown tastatur
+                hideKeyboard()
             }
             else {
                 Toast.makeText(this, "Geben Sie zuerst eine Nachricht ein...", Toast.LENGTH_SHORT).show()
@@ -133,5 +134,14 @@ class ChatActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val hide = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            hide.hideSoftInputFromWindow(view.windowToken,0)
+        }
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 }

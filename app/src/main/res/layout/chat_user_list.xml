@@ -16,7 +16,7 @@
         android:layout_marginEnd="20dp"
         android:src="@mipmap/ic_launcher"
         app:civ_border_color="@color/black"
-        app:civ_border_width="3px"
+        app:civ_border_width="4px"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -35,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Hier ist eine lange Nachricht, die zeigen soll ob der recycler view auhc funktionierrtt......."
+        android:text="Sende eine Nachricht..."
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/user_avatar"
         app:layout_constraintStart_toEndOf="@+id/user_avatar"
         app:layout_constraintTop_toBottomOf="@+id/user_name"

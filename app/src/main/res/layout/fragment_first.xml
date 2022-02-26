@@ -15,145 +15,101 @@
 
         <Button
             android:id="@+id/ButtonEditName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="540dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="7dp"
             android:text="Ausloggen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/ButtonEditPasswort" />
 
         <TextView
             android:id="@+id/TextViewTitle"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
             android:text="Persönliche Informationen"
             android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/TextViewEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/TextViewEmail"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="10dp"
             android:gravity="center"
             android:text="Email Adresse"
-            android:textSize="22sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/TextViewTitle" />
 
         <Button
             android:id="@+id/ButtonEditEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="288dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="220dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
             android:text="Email Aktualisieren"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
         <Button
             android:id="@+id/ButtonEditPasswort"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="492dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="250dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
             android:text="Passwort Aktualisieren"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="140dp"
+            android:layout_width="220dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/customborder2"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="Neue Email"
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="192dp"
+            android:layout_width="220dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/customborder2"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="Passwort"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="348dp"
-            android:ems="10"
-            android:hint="Altes Passwort"
-            android:inputType="textPassword"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-        <EditText
-            android:id="@+id/editTextTextPassword4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="396dp"
-            android:ems="10"
-            android:hint="Neues Passwort"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="444dp"
-            android:ems="10"
-            android:hint="Passwort bestätigen"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
+        <!--<ImageView
             android:id="@+id/imageView3"
             android:layout_width="125dp"
             android:layout_height="125dp"
@@ -163,18 +119,85 @@
             android:cropToPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars" />-->
+
+        <EditText
+            android:id="@+id/editTextTextPassword3"
+            android:layout_width="250dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/customborder2"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Altes Passwort"
+            android:inputType="textPassword"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword5" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword4"
+            android:layout_width="250dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/customborder2"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Neues Passwort"
+            android:inputType="textPassword"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ButtonEditEmail" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword5"
+            android:layout_width="250dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/customborder2"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Passwort bestätigen"
+            android:inputType="textPassword"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword4" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView3"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="10dp"
+            android:cropToPadding="true"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="6px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextViewEmail" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="240dp"
+            android:layout_width="143dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="5dp"
             android:text="Avatar Ändern"
+            android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.936"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

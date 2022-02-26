@@ -60,7 +60,7 @@ class UploadActivity : AppCompatActivity() {
         }
 
         binding.imageViewGallery.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED
                 ) {
@@ -91,7 +91,17 @@ class UploadActivity : AppCompatActivity() {
         }
 
         binding.buttonUpload.setOnClickListener {
-            upload()
+            if (binding.editTextTextPersonName.text.isEmpty())
+                {
+                    Toast.makeText(this, "Geben Sie einen Namen für den Gegenstand ein...", Toast.LENGTH_SHORT).show()
+                }
+            if (binding.editTextTextPersonName2.text.isEmpty())
+            {
+                Toast.makeText(this, "Geben Sie einen Preis ein...", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                upload()
+            }
         }
     }
 
@@ -122,6 +132,7 @@ class UploadActivity : AppCompatActivity() {
             storageReference.putFile(ImageUri!!).
             addOnSuccessListener {
                 binding.firebaseImage.setImageURI(null)
+                uploaddatabase()
                 Toast.makeText(this, "Das Bild wurde erfolgreich hochgeladen!", Toast.LENGTH_SHORT).show()
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 val intent = Intent(this,thirdFragment::class.java)
@@ -138,6 +149,7 @@ class UploadActivity : AppCompatActivity() {
             storageReference.putBytes(ImageBytes!!).
             addOnSuccessListener {
                 binding.firebaseImage.setImageBitmap(null)
+                uploaddatabase()
                 Toast.makeText(this, "Das Bild wurde erfolgreich hochgeladen!", Toast.LENGTH_SHORT).show()
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 val intent = Intent(this,thirdFragment::class.java)
@@ -154,15 +166,6 @@ class UploadActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun createImageFile(): File?{
-
-        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val taken_image = File.createTempFile(fileName, ".jpg", storageDir)
-
-        imagePath = taken_image.absolutePath
-        return taken_image
-    }*/
-
     companion object {
         //image pick code
         private val IMAGE_PICK_CODE = 1000
@@ -175,14 +178,14 @@ class UploadActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when(requestCode){
-            /*PERMISSION_CODE->{
+            PERMISSION_CODE->{
                 if (grantResults.size >0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
                 }
                 else{
                     Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 }
-            }*/
+            }
             IMAGE_PICK_CODE->{
                 if (grantResults.size >0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
@@ -206,7 +209,7 @@ class UploadActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK && data != null){
 
             when(requestCode){
                 IMAGE_TAKE_CODE->{
@@ -226,7 +229,10 @@ class UploadActivity : AppCompatActivity() {
                 }
             }
         }
-        uploaddatabase()
+        else{
+            val intent = Intent(this,UploadActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun uploaddatabase()

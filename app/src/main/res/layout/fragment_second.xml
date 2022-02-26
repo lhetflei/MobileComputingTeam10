@@ -5,18 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <ImageView
+
+    <!--<ImageView
         android:id="@+id/item_image"
         android:layout_width="match_parent"
         android:layout_height="194dp"
         android:importantForAccessibility="no"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop" />-->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"
         android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager" />

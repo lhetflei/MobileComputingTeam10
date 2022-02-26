@@ -53,7 +53,8 @@ class ItemAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item, parent, false)
+            //.inflate(R.layout.list_item, parent, false)
+            .inflate(R.layout.list_item3, parent, false)
         return ItemAdapter.ItemViewHolder(adapterLayout,mListener)
     }
 
@@ -64,7 +65,8 @@ class ItemAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.text.text = item.text
-        holder.price.text = item.price.toString()+"€/Tag"
+        //holder.price.text = item.price.toString()+"€/Tag"
+        holder.price.text = item.price.toString()
         holder.name.text = item.userID.toString()
 
             var storageRef = FirebaseStorage.getInstance().reference.child(item.bild.toString())

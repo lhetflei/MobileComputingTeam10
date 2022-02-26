@@ -10,17 +10,16 @@
         android:id="@+id/button_upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload"
         android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="500dp"
-        />
+        android:layout_marginTop="550dp"
+        android:text="Upload" />
 
     <ImageView
         android:id="@+id/imageView_camera"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginHorizontal="114dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="480dp"
 
         android:src="@drawable/ic_camera" />
 
@@ -29,37 +28,52 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginHorizontal="232dp"
-        android:layout_marginTop="437dp"
+        android:layout_marginTop="477dp"
         android:src="@drawable/ic_gallery" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/firebaseImage"
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="115dp"
-        android:background="@android:drawable/ic_menu_gallery"
-        tools:src="@android:drawable/ic_menu_gallery" />
+        android:layout_marginTop="130dp"
+        android:drawableStart="@drawable/ic_baseline_description_24"
+        />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="25dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Name des Gegenstandes"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:background="@drawable/customborder2"
+        android:drawableStart="@drawable/ic_baseline_description_24"
+        android:drawablePadding="-20dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:textSize="18dp"
+        />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_height="35dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="70dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Preis pro Tag"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:background="@drawable/customborder2"
+        android:drawableStart="@drawable/ic_baseline_euro_24"
+        android:drawablePadding="-20dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:textSize="18dp"/>
 
 </FrameLayout>

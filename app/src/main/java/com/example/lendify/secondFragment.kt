@@ -12,14 +12,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lendify.adapter.ItemAdapter
+import com.example.lendify.adapter.ItemAdapter3
+import com.example.lendify.adapter.UserAdapter
 import com.example.lendify.data.Datasource
 import com.example.lendify.databinding.FragmentSecondBinding
 import com.example.lendify.model.Items
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.lendify.model.User
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.okhttp.Dispatcher
 import kotlinx.coroutines.*
@@ -46,10 +49,13 @@ class secondFragment : Fragment(R.layout.fragment_second) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //RecyclerView.LayoutManager
         GlobalScope.launch(Dispatchers.Main) {
             val myDataset = Datasource().loadItems()
             delay(250) //warten auf datenbank
             try {
+
+                //getItemList()
                 var adapter = ItemAdapter(myDataset)
                 binding.recyclerView.adapter = adapter
                 adapter.setOnItemClickListener(object : ItemAdapter.onItemClickListener{
@@ -83,6 +89,31 @@ class secondFragment : Fragment(R.layout.fragment_second) {
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
+    }
+    fun getItemList() {
+        val firebase: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+
+        //Refresh
+        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference("angebote")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                myDataset.clear()
+                for (dataSnapShot: DataSnapshot in snapshot.children) {
+                    val item = dataSnapShot.getValue(Items::class.java)
+
+                    //if (user!!.userID != firebase.uid) {
+                    /*if (item!!.userID != firebase.uid)  {
+                        myDataset.add(item)
+                    }*/
+                }
+                val user_a = ItemAdapter3(context!!, myDataset)
+                binding.recyclerView.adapter = user_a
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context,"Error", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 }
