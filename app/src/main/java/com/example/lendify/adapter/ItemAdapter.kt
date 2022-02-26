@@ -65,8 +65,7 @@ class ItemAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.text.text = item.text
-        //holder.price.text = item.price.toString()+"€/Tag"
-        holder.price.text = item.price.toString()
+        holder.price.text = item.price.toString()+"€/Tag"
         holder.name.text = item.userID.toString()
 
             var storageRef = FirebaseStorage.getInstance().reference.child(item.bild.toString())
