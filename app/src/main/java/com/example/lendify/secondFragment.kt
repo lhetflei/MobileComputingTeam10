@@ -37,7 +37,7 @@ class secondFragment : Fragment(R.layout.fragment_second) {
         //RecyclerView.LayoutManager
         GlobalScope.launch(Dispatchers.Main) {
             val myDataset = Datasource().loadItems()
-            delay(250) //warten auf datenbank
+            delay(350) //warten auf datenbank
             try {
 
                 //getItemList()
@@ -60,7 +60,7 @@ class secondFragment : Fragment(R.layout.fragment_second) {
             }
             catch (e:Exception)
             {
-                delay(1000)
+                delay(500)
                 //reload falls datenbank zu langsam
                 val intent = Intent(activity,PersonalActivity::class.java)
                 startActivity(intent)

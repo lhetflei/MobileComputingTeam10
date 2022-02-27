@@ -60,11 +60,9 @@ class MainActivity : AppCompatActivity() {
         val email = binding.EditTextNameL.text.toString().trim()
         val password = binding.EditTextPasswordL.text.toString().trim()
 
-        //progressDialog.show()
+
         ref.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                val firebaseUser = ref.currentUser
-                val email = firebaseUser!!.email
                 val intent = Intent(this,PersonalActivity::class.java)
                 startActivity(intent)
             }

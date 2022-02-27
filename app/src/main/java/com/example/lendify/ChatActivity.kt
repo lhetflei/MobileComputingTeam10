@@ -23,9 +23,7 @@ class ChatActivity : AppCompatActivity() {
     var firebaseUser: FirebaseUser? = null
     var databaseReference: DatabaseReference? = null
     var avatar_databaseReference: DatabaseReference? = null
-    val localfile = File.createTempFile("tempImage","jpg")
     private var messageList = ArrayList<Messages>()
-    private var ref = FirebaseAuth.getInstance()
     var str_avatar: String = ""
 
 
