@@ -1,30 +1,17 @@
 package com.example.lendify.adapter
 
-import android.app.Activity
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lendify.PersonalActivity
 import com.example.lendify.R
 import com.example.lendify.model.Items
-import com.example.lendify.secondFragment
-import com.example.lendify.thirdFragment
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.squareup.okhttp.Dispatcher
-import kotlinx.coroutines.*
 import java.io.File
-import java.lang.Exception
 
 class ItemAdapter(
     private val dataset: ArrayList<Items>

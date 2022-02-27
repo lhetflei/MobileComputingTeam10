@@ -4,7 +4,6 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.media.Image
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,15 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lendify.R
 import com.example.lendify.model.Messages
-import com.example.lendify.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
-import java.lang.Exception
 
 
 class MessagesAdapter2(private val add_message: Context, private val messageList :ArrayList<Messages>): RecyclerView.Adapter<MessagesAdapter2.ViewHolder>() {

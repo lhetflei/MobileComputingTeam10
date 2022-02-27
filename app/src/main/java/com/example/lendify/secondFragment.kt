@@ -1,33 +1,21 @@
 package com.example.lendify
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
 import com.example.lendify.adapter.ItemAdapter
-import com.example.lendify.adapter.ItemAdapter3
-import com.example.lendify.adapter.UserAdapter
 import com.example.lendify.data.Datasource
 import com.example.lendify.databinding.FragmentSecondBinding
-import com.example.lendify.model.Items
-import com.example.lendify.model.User
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
-import com.squareup.okhttp.Dispatcher
-import kotlinx.coroutines.*
-import java.io.File
-import java.lang.Exception
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class secondFragment : Fragment(R.layout.fragment_second) {
     private var _binding: FragmentSecondBinding?=null

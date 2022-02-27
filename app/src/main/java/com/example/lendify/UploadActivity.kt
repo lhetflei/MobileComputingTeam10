@@ -6,34 +6,20 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Camera
-import android.graphics.ImageDecoder
-import android.hardware.camera2.CameraManager
-import android.icu.text.SimpleDateFormat
-import android.media.Image
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
-import android.util.Base64
 import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lendify.databinding.ActivityUploadBinding
 import com.example.lendify.model.Items
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.IOException
-import java.net.URI
 import java.util.*
-import java.util.jar.Manifest
 
 
 class UploadActivity : AppCompatActivity() {

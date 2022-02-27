@@ -1,30 +1,23 @@
 package com.example.lendify
 
 import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lendify.adapter.ItemAdapter
-import com.example.lendify.adapter.ItemAdapter2
 import com.example.lendify.data.Datasource
-import com.example.lendify.databinding.FragmentFirstBinding
-import com.example.lendify.databinding.FragmentSecondBinding
 import com.example.lendify.databinding.FragmentThirdBinding
-import com.example.lendify.model.Items
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class thirdFragment : Fragment(R.layout.fragment_third) {
     private var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")

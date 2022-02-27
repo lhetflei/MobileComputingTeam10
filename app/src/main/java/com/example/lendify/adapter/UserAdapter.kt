@@ -13,12 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lendify.ChatActivity
 import com.example.lendify.R
-import com.example.lendify.fourthFragment
 import com.example.lendify.model.User
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
-import java.lang.Exception
 
 val localfile = File.createTempFile("tempImage","jpg")
 

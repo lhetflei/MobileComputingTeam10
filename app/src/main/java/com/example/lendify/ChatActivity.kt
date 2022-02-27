@@ -1,32 +1,19 @@
 package com.example.lendify
 
 import android.content.ContentValues.TAG
-import android.content.Context.INPUT_METHOD_SERVICE
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lendify.adapter.MessagesAdapter2
-import com.example.lendify.adapter.UserAdapter
 import com.example.lendify.databinding.ActivityChatBinding
-import com.example.lendify.databinding.ActivityPersonalBinding
 import com.example.lendify.model.Messages
 import com.example.lendify.model.User
-import com.google.api.Context
-import com.google.api.Distribution
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.protobuf.Value
 import java.io.File
 
 

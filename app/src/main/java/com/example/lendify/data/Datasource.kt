@@ -2,20 +2,12 @@ package com.example.lendify.data
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import com.example.lendify.R
 import com.example.lendify.model.Items
-import com.google.android.gms.tasks.Tasks.await
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.*
 
 class Datasource {
 
