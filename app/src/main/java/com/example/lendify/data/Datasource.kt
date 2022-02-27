@@ -32,7 +32,7 @@ class Datasource {
                                 itemSnapshot.child("userID").value.toString()
                             )
                         )
-                        //Log.i(TAG, itemlist.toString())
+
                     }
 
                 }
@@ -40,7 +40,7 @@ class Datasource {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
 
         })
@@ -75,7 +75,7 @@ class Datasource {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+
                 }
 
             })

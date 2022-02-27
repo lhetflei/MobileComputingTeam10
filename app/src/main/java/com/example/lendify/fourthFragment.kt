@@ -33,10 +33,6 @@ class fourthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getUserList()
-        /*userlist.add(User("Loris", "https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295399__340.png"))
-        userlist.add(User("Loris", "https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295399__340.png"))
-        userlist.add(User("Loris", "https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295399__340.png"))
-        userlist.add(User("Loris", "https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295399__340.png"))*/
     }
 
     fun getUserList() {
@@ -51,7 +47,7 @@ class fourthFragment : Fragment() {
                     val user = dataSnapShot.getValue(User::class.java)
 
                     //if (user!!.userID != firebase.uid) {
-                    //TODO ALLE NUTZER ANZEIGEN DIE EINE RECEIVE ID VON MIR HABEN ODER EINE SEND ID
+
                     if (user!!.userID != firebase.uid)  {
                         userList.add(user)
                     }

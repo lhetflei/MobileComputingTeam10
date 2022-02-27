@@ -34,15 +34,6 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
     var ImageUri: Uri? = null
     val localfile = File.createTempFile("tempImage","jpg")
 
-    /*class ViewHolderSend(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val chat_message = itemView.findViewById<TextView>(R.id.message_rows_sent)
-        val profil_image = itemView.findViewById<ImageView>(R.id.message_rows_sent_imageview)
-    }
-
-    class ViewHolderReceive(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val chat_message = itemView.findViewById<TextView>(R.id.message_rows_receive)
-        val profil_image = itemView.findViewById<ImageView>(R.id.message_rows_receive_imageview)
-    }*/
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val msg_receive = itemView.findViewById<TextView>(R.id.message_rows_receive)
@@ -72,7 +63,7 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
         Log.i(TAG, MSG.toString())
         if (firebaseUser!!.uid.toString() == MSG.receiverID.toString()) {
             holder.msg_receive.text = MSG.message
-            //Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
+
 
             if(MSG.userAvatar != "") {
                 var storageRef =
@@ -87,15 +78,7 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
                 }
 
 
-                /*try {
-                    holder.avatar_receive.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 550, 500, true))
-                } catch (e: Exception) {
-                    Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
-                }*/
 
-                /*else {
-                    Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
-                }*/
             }
         }
         else {
@@ -120,9 +103,7 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
                     }
                 }
 
-                /*else {
-                    Glide.with(add_message).load(holder.avatar_receive).placeholder(R.drawable.ic_baseline_person_24)
-                }*/
+
             }
         }
     }
@@ -142,15 +123,4 @@ class MessagesAdapter2(private val add_message: Context, private val messageList
         return messageList.size
     }
 
-    private fun get_avatar() {
-        databaseReference = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app/").getReference()
-        databaseReference!!.child(firebaseUser!!.uid.toString()).get().addOnSuccessListener {
-            var image = it.value.toString()
-            var storageRef = FirebaseStorage.getInstance().reference.child(image)
-            storageRef.getFile(localfile).addOnCanceledListener {
-                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
-
-            }
-        }
-    }
 }

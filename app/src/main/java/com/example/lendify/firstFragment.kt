@@ -155,7 +155,6 @@ class firstFragment : Fragment(R.layout.fragment_first) {
             }
         }
         else{
-            //TODO first fragment anstatt activity aufrufen
             val intent = Intent(context,PersonalActivity::class.java)
             startActivity(intent)
         }
