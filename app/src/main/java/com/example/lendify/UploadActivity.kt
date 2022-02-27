@@ -50,13 +50,13 @@ class UploadActivity : AppCompatActivity() {
                 if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED
                 ) {
-                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(permissions, PERMISSION_CODE);
+                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permissions, PERMISSION_CODE)
                 } else {
-                    pickImageFromGallery();
+                    pickImageFromGallery()
                 }
             } else {
-                pickImageFromGallery();
+                pickImageFromGallery()
             }
         }
 
@@ -65,13 +65,13 @@ class UploadActivity : AppCompatActivity() {
                 if (checkSelfPermission(android.Manifest.permission.CAMERA) ==
                     PackageManager.PERMISSION_DENIED
                 ) {
-                    val permissions = arrayOf(android.Manifest.permission.CAMERA);
-                    requestPermissions(permissions, PERMISSION_CODE);
+                    val permissions = arrayOf(android.Manifest.permission.CAMERA)
+                    requestPermissions(permissions, PERMISSION_CODE)
                 } else {
-                    takeImageFromCamera();
+                    takeImageFromCamera()
                 }
             } else {
-                takeImageFromCamera();
+                takeImageFromCamera()
             }
 
         }
