@@ -21,7 +21,6 @@ class Datasource {
 
     private var database = FirebaseDatabase.getInstance("https://lendify-6cd5f-default-rtdb.europe-west1.firebasedatabase.app").getReference("angebot")
 
-    var username: String = ""
     var itemlist = arrayListOf<Items>()
     var itemlist2 = arrayListOf<Items>()
     private var ref = FirebaseAuth.getInstance()

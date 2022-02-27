@@ -32,7 +32,6 @@ import java.lang.Exception
 class secondFragment : Fragment(R.layout.fragment_second) {
     private var _binding: FragmentSecondBinding?=null
     private val binding get()=_binding!!
-    private val myDataset = arrayListOf<Items>()
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,

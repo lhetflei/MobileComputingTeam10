@@ -124,7 +124,7 @@ class UploadActivity : AppCompatActivity() {
         progressDialog.setCancelable(false)
         progressDialog.show()
 
-        val storageReference = FirebaseStorage.getInstance().getReference("Bilder/$fileName")
+        val storageReference = FirebaseStorage.getInstance().getReference("Bilder/$fileName"+ref.uid.toString())
 
         if (ImageUri != null && ImageBytes == null)
         {
@@ -237,7 +237,7 @@ class UploadActivity : AppCompatActivity() {
 
     fun uploaddatabase()
     {
-        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName",ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt(),ref.uid.toString()+now.toString(), username.toString())
+        val add =Items(binding.editTextTextPersonName.text.toString(),"Bilder/$fileName"+ref.uid.toString(),ref.currentUser!!.email.toString(),binding.editTextTextPersonName2.text.toString().toInt(),ref.uid.toString()+now.toString(), username.toString())
         database.child("angebot").child(ref.uid.toString()+now.toString()).setValue(add)
     }
 }
